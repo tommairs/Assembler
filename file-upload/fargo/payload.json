@@ -1,0 +1,34 @@
+{
+  \"options\": {
+    \"open_tracking\": true,
+    \"click_tracking\": true,
+    \"start_time\":\"2016-04-07T13:00:00-06:00\"
+  },
+  \"campaign_id\": \"placeholder\",
+  \"return_path\": \"placeholder\",
+  \"metadata\": {},
+  \"substitution_data\": {},
+  \"recipients\": [
+    { \"address\": {\"email\": \"placeholder@here.com\",\"name\": \"placeholder\"},
+      \"substitution_data\": {\"sender\":\"placeholder\"}
+    }
+  ],
+  \"content\": {
+    \"from\": {\"name\": \"placeholder\",\"email\": \"placeholder@placeholder.com\"},
+    \"subject\": \"placeholder\",
+    \"reply_to\": \"placeholder <placeholder@placeholder.net>\",
+    \"headers\": {},
+    \"text\": \"blah blah
+
+
+
+
+\",
+    \"html\": \"<html><body><p>
+This is sample text you can see if you are not looking at the HTML portion.
+</p>
+</body></html>
+
+\"
+   }
+  }
