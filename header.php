@@ -16,7 +16,6 @@ echo '
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="styles.css">
 <link rel="stylesheet" type="text/css" href="dropzone/dist/dropzone.css">
-<link rel="stylesheet" href="css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
 <script type="text/javascript" src="helperscripts.js"></script>
@@ -63,6 +62,8 @@ echo '
 
 <ul class="topnav" id="generatorTopNav">
   <li><a href="index.php">Home</a></li>
+  <li><a href="templatelibrary.php">Library</a></li>
+  <li><a href="reports.php">Reports</a></li>
   <li><a href="help.php">Help</a></li>
   <li><a href="https://developers.sparkpost.com/" target="_blank">SparkPost Documentation</a></li>
   <li><a href="'.$contactlink.'">Contact</a></li>

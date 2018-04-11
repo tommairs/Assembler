@@ -23,11 +23,16 @@ include('header.php');
 $apiroot = "https://".$apidomain."/api/v1";
 
 // If we have the keys, go for a drive right away...
+/*
+
 if (strlen($apikey) > 39 && $apiroot != ""){
 header("Location: ./templatedropper.php");
 die();
 }
+*/
 
+
+/*
 echo '
 <body id="bkgnd">
 <ul class="topnav" id="generatorTopNav">
@@ -39,6 +44,7 @@ echo '
 <center>
   <p><h1>'.$apptitle.'</h1></p>
 ';
+*/
 
 echo ' 
 <form action="templateselector.php" id="keyform" name="keyform" onsubmit="stringToHex()">
@@ -116,7 +122,6 @@ echo '
         </tr>
     </table>
 </center>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>*v0.00a382 Last Updated Dec 15, 2016
 </body>
 </html>
 ';
