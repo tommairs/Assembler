@@ -41,6 +41,7 @@ Thumbs.db
 *.bak
 *.old
 *.ini
+env.php
 
 # Partner tools
 ############################
