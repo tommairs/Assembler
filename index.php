@@ -22,14 +22,16 @@ include('env.php');
 include('header.php');
 $apiroot = "https://".$apidomain."/api/v1";
 
+
+
+
 // If we have the keys, go for a drive right away...
-/*
 
 if (strlen($apikey) > 39 && $apiroot != ""){
 header("Location: ./templatedropper.php");
 die();
 }
-*/
+
 
 
 /*

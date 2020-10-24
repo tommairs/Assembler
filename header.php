@@ -4,7 +4,7 @@ $verified = $_SESSION['ver'];
 
 // make sure we start with a secure connection.
 if ($_SERVER['SERVER_PORT'] != "443"){
-   header("Location: https://app.trymsys.net/home.php");
+   header("Location: https://app.trymsys.net/cst/Ramesses/index.php");
    die();
 }
 
@@ -30,17 +30,17 @@ echo "
 <body id='bkgnd' onload='cleanup()'>
 ";
 
-include_once("/analyticstracking.php");
 
 // If not logged in, request credentials
 
 if ($verified != "true"){
-    echo "<div class=\"result critical\">
-            <h2 class=\"critical\">You need to log in to use this site</h2>
+    echo "<div class="result critical">
+            <h2 class="critical">You need to log in to use this site</h2>
           </div>
-          <form action=\"/login.php\" method=\"post\" id=\"form1\">
-            Secret: <input type=\"password\" name=\"secret\">
-            <button type=\"submit\" form=\"form1\" value=\"Submit\">Submit</button>
+          <form action="./login.php" method="post" id="form1">
+            Username: <input type="username" name="uid">
+            Password: <input type="password" name="passwd">
+            <button type="submit" form="form1" value="Submit">Submit</button>
           </form>
     ";
 exit(0);
