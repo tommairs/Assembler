@@ -3,8 +3,8 @@ body,
 .ad,
 .sm
 {
-  margin:0;
-  font: normal 10px Verdana, Arial, sans-serif;
+  margin:5;
+  font: normal 14px Verdana, Arial, sans-serif;
 }
 
 a
@@ -81,7 +81,13 @@ border-color: #298272;
 background-color: #ffffff;
 font-size: 12px;
 font-family: Helvetica, Arial;
+color: #ffff;
 }
+
+.select-items {
+  color: #ffffff;
+}
+
 
 /* Can use this when I don't want an expanding input field */
 input[type=textnormal] {
@@ -227,6 +233,7 @@ select {
 height:25px;
 line-height:25px;
 background:#f4f4f4;
+color:#000000;
 } 
 }
 select::-moz-focus-inner { /*Remove button padding in FF*/ 

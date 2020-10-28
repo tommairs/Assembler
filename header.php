@@ -14,8 +14,9 @@ echo '
 <head>
 <title>'.$apptitle.'</title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="stylesheet" type="text/css" href="dropzone/dist/dropzone.css">
+<link rel="stylesheet" type="text/css" href="styles_new.css">
+<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+<!--<link rel="stylesheet" type="text/css" href="dropzone/dist/dropzone.css"> --> 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
 <script type="text/javascript" src="helperscripts.js"></script>
@@ -34,15 +35,17 @@ echo "
 // If not logged in, request credentials
 
 if ($verified != "true"){
-    echo "<div class="result critical">
+    echo '<div class="result critical">
             <h2 class="critical">You need to log in to use this site</h2>
           </div>
           <form action="./login.php" method="post" id="form1">
-            Username: <input type="username" name="uid">
-            Password: <input type="password" name="passwd">
-            <button type="submit" form="form1" value="Submit">Submit</button>
+            <table>
+              <tr><td>Username:</td><td><input type="username" size=50 name="uid" placeholder="your@email.addr"></td></tr>
+              <tr><td>Password:</td><td><input type="password" size=50 name="passwd" placeholder="shhhhhhh....."></td></tr>
+              <tr><td>&nbsp;</td><td><button type="submit" form="form1" value="Submit">Submit</button></td></tr>
+            </table>
           </form>
-    ";
+    ';
 exit(0);
 }
 
@@ -58,18 +61,21 @@ if (!$apidomain){
     include ('cgPHPLibraries.php');
 
 echo '
-<center>
 
 <ul class="topnav" id="generatorTopNav">
   <li><a href="index.php">Home</a></li>
+  <li><a href="sherpa.php">Sherpa</a></li>
   <li><a href="templatelibrary.php">Library</a></li>
   <li><a href="reports.php">Reports</a></li>
-  <li><a href="help.php">Help</a></li>
+  <li><a href="about.php">Help/About</a></li>
   <li><a href="https://developers.sparkpost.com/" target="_blank">SparkPost Documentation</a></li>
-  <li><a href="'.$contactlink.'">Contact</a></li>
+  <li><a href="logout.php">Logout</a></li>
 </ul>
   <p><h1>'.$apptitle.'</h1></p>
-
 ';
+
+  if ($AppVersion){
+    echo "<h2>Version $AppVersion</h2>";
+  }
 
 

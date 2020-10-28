@@ -21,22 +21,11 @@ limitations under the License.
 include('env.php');
 include('header.php');
 
-echo '
-<body id="bkgnd">
-<ul class="topnav" id="generatorTopNav">
-  <li><a href="index.php">Home</a></li>
-  <li><a href="help.php">Help</a></li>
-  <li><a href="https://developers.sparkpost.com/" target="_blank">SparkPost Documentation</a></li>
-  <li><a href="'.$contactlink.'">Contact</a></li>
-</ul>
-<center>
-  <p><h1>'.$apptitle.'</h1></p>
-';
-
 echo "
 <p>
 Help Documentation goes here
 </p>
 
 ";
+
 

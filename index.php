@@ -1,6 +1,6 @@
 <?php
 
-/* Copyright 2016 Tom Mairs */
+/* Copyright 2020 Tom Mairs */
 
 /* License and Rights
 
@@ -21,36 +21,20 @@ limitations under the License.
 include('env.php');
 include('header.php');
 $apiroot = "https://".$apidomain."/api/v1";
-
-
-
+$APIKeyValid = "false";
 
 // If we have the keys, go for a drive right away...
 
 if (strlen($apikey) > 39 && $apiroot != ""){
-header("Location: ./templatedropper.php");
-die();
+  $APIKeyValid = "true";
 }
 
 
-
-/*
-echo '
-<body id="bkgnd">
-<ul class="topnav" id="generatorTopNav">
-  <li><a href="index.php">Home</a></li>
-  <li><a href="help.php">Help</a></li>
-  <li><a href="https://developers.sparkpost.com/" target="_blank">SparkPost Documentation</a></li>
-  <li><a href="'.$contactlink.'">Contact</a></li>
-</ul>
-<center>
-  <p><h1>'.$apptitle.'</h1></p>
-';
-*/
-
-echo ' 
-<form action="templateselector.php" id="keyform" name="keyform" onsubmit="stringToHex()">
-<table border="0" width="60%" cellpadding="10">
+// Get the API key if it is not recorded already
+if ($APIKeyValid == "false"){
+  echo ' 
+  <form action="templateselector.php" id="keyform" name="keyform" onsubmit="stringToHex()">
+  <table border="0" width="60%" cellpadding="10">
   <tr>
     <td valign=top>
         <h3>Your SparkPost API Key:</h3>
@@ -88,12 +72,9 @@ echo '
          <input  type="submit" value="Submit" name="submit">
     </td>
   </tr>
-</table>
-</form>
-';
+  </table>
+  </form>
 
-
-echo '
 <table border="0" width="75%" cellpadding="20">
     <tr>
         <td>
@@ -124,6 +105,58 @@ echo '
         </tr>
     </table>
 </center>
+';
+}
+// end function to get API key
+
+
+
+// Standard validated index page
+
+if ($APIKeyValid == "true"){
+
+echo '
+
+<div indent>
+<p>
+Sherpa - This will walk you though a communicaiton build step by step
+</p>
+
+<p>
+Library - a library of stored content, reports, target lists, queries, etc
+</p>
+
+<p>
+Reports - Standard current reports 
+</p>
+
+<p>
+Help - Howtos, help, and guides 
+</p>
+
+<p>
+About - All about this project including contact information 
+</p>
+
+<p>
+SparkPost docs - Because this runs on top of SparkPost Cloud 
+</p>
+
+<p>
+Logout - kinda obvious 
+</p>
+
+</div>
+
+
+';
+
+
+}
+
+
+
+echo '
 </body>
 </html>
 ';

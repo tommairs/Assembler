@@ -18,7 +18,7 @@ limitations under the License.
 
 ******************************************/
 
-include('env.ini');
+include('env.php');
 include('header.php');
 $now = time();
 
