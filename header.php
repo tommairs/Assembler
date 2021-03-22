@@ -11,15 +11,19 @@ if ($_SERVER['SERVER_PORT'] != "443"){
 echo '
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\" class="no-js">
-<head>
-<title>'.$apptitle.'</title>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" type="text/css" href="styles_new.css">
+<head>';
+
+include_once("/var/www/html/analyticstracking.php");
+
+echo '<title>'.$apptitle.'</title>
+<link rel="shortcut icon" href="./res/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="src/styles_new.css">
+<link rel="stylesheet" type="text/css" href="src/tabs.css">
 <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
 <!--<link rel="stylesheet" type="text/css" href="dropzone/dist/dropzone.css"> --> 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="scripts.js"></script>
-<script type="text/javascript" src="helperscripts.js"></script>
+<script type="text/javascript" src="src/scripts.js"></script>
+<script type="text/javascript" src="src/helperscripts.js"></script>
 <script src="./dropzone/dist/dropzone.js"></script>
 
 ';
@@ -30,7 +34,6 @@ echo "
 </head>
 <body id='bkgnd' onload='cleanup()'>
 ";
-
 
 // If not logged in, request credentials
 
@@ -58,24 +61,14 @@ if (!$apidomain){
         if (substr($apiroot, -1) == "/") $apiroot = substr($apiroot, 0, -1); //get rid of trailing slash
 }
 
-    include ('cgPHPLibraries.php');
+ include ('toolbar.php');
 
 echo '
-
-<ul class="topnav" id="generatorTopNav">
-  <li><a href="index.php">Home</a></li>
-  <li><a href="sherpa.php">Sherpa</a></li>
-  <li><a href="templatelibrary.php">Library</a></li>
-  <li><a href="reports.php">Reports</a></li>
-  <li><a href="about.php">Help/About</a></li>
-  <li><a href="https://developers.sparkpost.com/" target="_blank">SparkPost Documentation</a></li>
-  <li><a href="logout.php">Logout</a></li>
-</ul>
   <p><h1>'.$apptitle.'</h1></p>
 ';
 
   if ($AppVersion){
-    echo "<h2>Version $AppVersion</h2>";
+    echo "<a href='changelog.php'><h2>Version $AppVersion</h2></a>";
   }
 
 

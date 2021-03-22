@@ -1,27 +1,6 @@
 <?php
 
-/***** Copyright 2016 Tom Mairs ******/
-
-/***** License and Rights ****************
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
-
-******************************************/
-
-include('env.php');
-include('header.php');
-$now = time();
-
+include('common.php');
 
 /**** Get any POSTED vars *******/
 $from = $_POST['from'];
@@ -37,11 +16,51 @@ $ip_pools = $_POST['ip_pools'];
 $sending_domains = $_POST['sending_domains'];
 $subaccounts = $_POST['subaccounts'];
 $timezone = $_POST['timezone'];
+$TransID = $_GET['tid'];
 
+
+//echo "TransID = $TransID / ". intval($TransID). "<br>";
+
+if (intval($TransID) > 0){
+  $url = "https://".$apidomain."/api/v1/events/message?";
+  $getfields="transmissions=".$TransID."";
+  
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url.$getfields);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($ch, CURLOPT_HEADER, FALSE);
+  curl_setopt($ch, CURLOPT_POST, FALSE);
+  //curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    "Content-Type: application/json",
+    "Authorization: $apikey"
+  ));
+  $response = curl_exec($ch);
+  curl_close($ch);
+
+  $EventsArray = json_decode($response,true);
+
+echo "<br><br>";
+
+echo "<div container>Audit History for Transaction $TransID<table border=1 cellpadding=5>";
+  foreach($EventsArray as $a=>$b){
+    foreach ($b as $c=>$d){
+echo "<tr><td> ".$d[rcpt_to]."</td><td>".$d[type]."</td><td>".$d[timestamp]."</td></tr>";
+      foreach ($d as $e=>$f){
+      
+      }
+    }
+  }
+
+echo "</table></div>";
+   
+
+//  exit(0);
+}
 
 /******  Set Defaults ********/
 if (!$from){
-  $from = date("Y-m-d\TH:i:s",($now-36000));
+  $from = date("Y-m-d\TH:i:s",($lastmonth));
 }
 if (!$to){
   $to = date("Y-m-d\TH:i:s",$now);
@@ -63,7 +82,7 @@ if ((strtotime($to)-strtotime($from)) > (32*86400)){
 }
 
 if (!$precision){
-  $precision = "hour";
+  $precision = "month";
 }
 
 
@@ -159,18 +178,20 @@ echo"
  <form method=post>
   <table>
    <tr><td> FROM: <input type=test name=from value=\"$from\"> </td><td> TO: <input type=text name=to value=\"$to\"></td></tr>
+<!--
    <tr><td> Domains:$domains</td><td> Campaigns: $campaigns</td></tr>
    <tr><td> Templates: $templates</td><td> Sending IPs: $sending_ips</td></tr>
    <tr><td> IP Pools: $ip_pools</td> <td>Sending Domains: $sending_domains</td></tr>
    <tr><td> SubAccounts: $subaccounts</td><td> Timezone: $timezone</td></tr>
    <tr><td colspan=2> Metrics: $metrics</td></tr>
+-->
    <tr><td> Precision: ";
 
 echo '<select name=precision>
         <option value="'.$precision.'">'.$precision.'</option>
         <option value="hour">hour</option>
         <option value="day">day</option>
-        <option value="month">month</option>
+        <option value="month" selected>month</option>
      </select>';
 
 echo "</td><td><input type=submit name=submit value=Refresh></td></tr>
@@ -238,10 +259,12 @@ echo "</td><td><input type=submit name=submit value=Refresh></td></tr>
 
      </div></td>
      <td> <div id="chart_div"></div></td>
+<!--
      <td><div>
       <b>Metrics Options</b><br>
 count_injected<br>count_bounce<br>count_rejected<br>count_delivered<br>count_delivered_first<br>count_delivered_subsequent<br>total_delivery_time_first<br>total_delivery_time_subsequent<br>total_msg_volume<br>count_policy_rejection<br>count_generation_rejection<br>count_generation_failed<br>count_inband_bounce<br>count_outofband_bounce<br>count_soft_bounce<br>count_hard_bounce<br>count_block_bounce<br>count_admin_bounce<br>count_undetermined_bounce<br>count_delayed<br>count_delayed_first<br>count_rendered<br>count_unique_rendered<br>count_unique_confirmed_opened<br>count_clicked<br>count_unique_clicked<br>count_targeted<br>count_sent<br>count_accepted<br>count_spam_complaint<br>
       </div></td>
+-->
      </tr>
    </table>
 

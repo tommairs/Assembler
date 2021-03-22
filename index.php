@@ -1,30 +1,10 @@
 <?php
 
-/* Copyright 2020 Tom Mairs */
-
-/* License and Rights
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
-
-*/
-
-include('env.php');
-include('header.php');
+include('common.php');
 $apiroot = "https://".$apidomain."/api/v1";
 $APIKeyValid = "false";
 
 // If we have the keys, go for a drive right away...
-
 if (strlen($apikey) > 39 && $apiroot != ""){
   $APIKeyValid = "true";
 }
@@ -116,41 +96,18 @@ if ($APIKeyValid == "false"){
 if ($APIKeyValid == "true"){
 
 echo '
+  <div indent>
+    <p>
+This tool leverages the SparkPost API, stored recipients and stored templates.  No recipient data is stored within this tool.</p>
+    <p>
+If you elect to store log-term detailed data and provide an external datastore location, you are responsible for the data security of the external location.
+    </p>
+    <p>
+APIs used by this application include Templates, Recipients, Metrics, Events, Webhooks.
+   </p>
 
-<div indent>
-<p>
-Sherpa - This will walk you though a communicaiton build step by step
-</p>
-
-<p>
-Library - a library of stored content, reports, target lists, queries, etc
-</p>
-
-<p>
-Reports - Standard current reports 
-</p>
-
-<p>
-Help - Howtos, help, and guides 
-</p>
-
-<p>
-About - All about this project including contact information 
-</p>
-
-<p>
-SparkPost docs - Because this runs on top of SparkPost Cloud 
-</p>
-
-<p>
-Logout - kinda obvious 
-</p>
-
-</div>
-
-
+  </div>
 ';
-
 
 }
 
