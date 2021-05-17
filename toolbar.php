@@ -3,8 +3,8 @@
 echo '
 <ul class="topnav" id="generatorTopNav">
   <li><a href="index.php">Home</a></li>
-  <li><a href="sherpa.php">Sherpa</a></li> 
-  <li><a href="lists.php">Contacts</a></li>
+  <li><a href="sherpa/index.php">Sherpa</a></li> 
+  <li><a href="listedit/index.php">Contacts</a></li>
   <li><a href="templatelibrary.php">Templates</a></li>
   <li><a href="reports.php">Reports</a></li>
   <li><a href="admin.php">Admin</a></li>
